@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 
+  	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+    <package name="default" namespace="/" extends="json-default">
+    	<global-results>
+			<result name="success" type="json">
+				<param name="contentType">application/json</param>
+				<param name="root">callback</param>
+			</result>
+			<result name="error">/WEB-INF/error.jsp</result>
+			<result name="bool"  type="json">
+				<param name="contentType">application/json</param>
+				<param name="root">bool</param>
+			</result>
+		</global-results>
+		
+        <action name="main" class="com.boss.main.action.MainAction">
+            <result name="success">/WEB-INF/main/main.jsp</result>
+        </action>
+        
+        <action name="getValue_" class="com.boss.main.action.MainAction">
+        </action>
+    </package>
+
+</struts>
